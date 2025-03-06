@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Page } from "./styles";
+import { FiDelete } from "react-icons/fi";
 
 const VirtualKeyboard: React.FC = () => {
   const [password, setPassword] = useState("");
@@ -10,15 +11,15 @@ const VirtualKeyboard: React.FC = () => {
     ["2", "8"],
     ["1", "4"],
     ["6", "7"],
-    ["⌫"],
   ];
 
-  const handleClick = (value: string) => {
-    if (value === "⌫") {
-      setPassword(password.slice(0, -1));
-    } else {
-      setPassword(password + value);
-    }
+  const handleButtonClick = (value: string) => {
+    setPassword((prev) => prev + value);
+    console.log(value);
+  };
+
+  const handleDelete = () => {
+    setPassword((prev) => prev.slice(0, -1));
   };
 
   return (
@@ -41,29 +42,27 @@ const VirtualKeyboard: React.FC = () => {
 
           <div className="buttons">
             {buttons.map((pair, index) => (
-              <div className="contentButton">
-                <button
-                  key={index}
-                  onClick={() =>
-                    handleClick(
-                      Array.isArray(pair)
-                        ? pair[Math.floor(Math.random() * 2)]
-                        : pair
-                    )
-                  }
-                >
+              <div className="contentButton" key={index}>
+                <button onClick={() => handleButtonClick(pair[Math.floor(Math.random() * pair.length)])}>
                   {Array.isArray(pair) ? `${pair[0]} ou ${pair[1]}` : pair}
                 </button>
               </div>
             ))}
+            <div className="contentButton">
+              <button onClick={handleDelete}>
+                <FiDelete size={30} />
+              </button>
+            </div>
           </div>
 
           <div className="buttonConfirm">
             <button>Acessar</button>
           </div>
-        </div>
 
-        <div className="container"></div>
+          <div className="return">
+            <p>Sucesso | Erro </p>
+          </div>
+        </div>
       </Page>
     </>
   );

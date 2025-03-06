@@ -6,32 +6,36 @@ export const Page = styled.div`
   overflow: hidden;
   padding: 10px;
 
+  background-color: #d3e0cb;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   button,
   input {
-    background-color: rgb(224, 224, 224); /* Cor de fundo */
-    color: #333; /* Cor do texto */
-    font-size: 16px; /* Tamanho da fonte */
-    padding: 10px 20px; /* Espaçamento interno para o botão e input */
-    border: 1px solid #ccc; /* Borda leve */
-    border-radius: 5px; /* Bordas arredondadas */
-    transition: all 0.3s ease; /* Transição suave para todos os efeitos */
-    cursor: pointer; /* Cursor de pointer para indicar interatividade */
-    outline: none; /* Remove o contorno padrão do input */
+    background-color: #dee8d8;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
   }
 
   .container {
     width: 49.5%;
     height: 100%;
-    background: #6191b7;
+    background: rgb(102, 129, 84);
 
     border-radius: 10px;
 
     .title {
       width: 100%;
-      height: 15%;
+      height: 10%;
+
+      color: #fff;
 
       display: flex;
       justify-content: center;
@@ -48,6 +52,8 @@ export const Page = styled.div`
     .subtitle {
       width: 100%;
       height: 10%;
+
+      color: #fff;
 
       display: flex;
       justify-content: center;
@@ -77,33 +83,32 @@ export const Page = styled.div`
       height: 45%;
 
       display: flex;
-      flex-wrap: wrap; /* Permite que os itens se quebrem em várias linhas */
-      justify-content: center; /* Centraliza os itens na linha */
-      align-items: center; /* Alinha os itens verticalmente */
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
 
       .contentButton {
-        width: 25%; /* Ajustando a largura dos botões para que caibam 3 por linha */
-        height: 25%; /* Definindo uma altura fixa para os botões */
-        margin: 10px; /* Adicionando um pouco de espaço entre os botões */
+        width: 25%;
+        height: 25%;
+        margin: 10px;
 
         button {
-          width: 100%; /* Faz com que o botão ocupe toda a largura do contêiner */
-          height: 100%; /* Faz com que o botão ocupe toda a altura do contêiner */
-          font-size: 16px; /* Define o tamanho da fonte */
-          cursor: pointer; /* Define o cursor como pointer para indicar que é clicável */
+          width: 100%;
+          height: 100%;
+          font-size: 16px;
+          cursor: pointer;
         }
 
         button:focus {
           outline: none;
           border-color: rgb(0, 52, 92);
         }
-
       }
     }
 
     .buttonConfirm {
       width: 100%;
-      height: 20%;
+      height: 15%;
 
       display: flex;
       justify-content: center;
@@ -111,7 +116,30 @@ export const Page = styled.div`
 
       button {
         width: 25%;
-        height: 50%;
+        height: 70%;
+      }
+    }
+
+    .return {
+      width: 100%;
+      height: 10%;
+
+      color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        width: 20%;
+        height: 40%;
+
+        background-color: #dee8d8;
+        color: #333;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }
