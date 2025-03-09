@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 const Rota: React.FC = () => (
   <Routes>
-    <Route index element={<Login />} />
+    <Route path="/:userId" element={<Login />} />
     <Route path="*" element={<NotFound />} />
   </Routes>
 );
