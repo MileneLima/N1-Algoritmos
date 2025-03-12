@@ -7,15 +7,17 @@ const VirtualKeyboard: React.FC = () => {
   const [password, setPassword] = useState("");
   const [buttons, setButtons] = useState<number[][]>([]); // Guarda a sequência
   const [hash, setHash] = useState<string>("");
-  const [message, setMessage] = useState<string>("");  // Mensagem para sucesso ou erro
-  const [messageType, setMessageType] = useState<"success" | "error" | "">("");  // Tipo de mensagem: sucesso ou erro
+  const [message, setMessage] = useState<string>(""); // Mensagem para sucesso ou erro
+  const [messageType, setMessageType] = useState<"success" | "error" | "">(""); // Tipo de mensagem: sucesso ou erro
   const { userId } = useParams();
 
   // Busca a sequência na API ao carregar a tela
   useEffect(() => {
     const fetchSequence = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/sequence/${userId}`);
+        const response = await fetch(
+          `http://localhost:3001/sequence/${userId}`
+        );
         const data = await response.json();
         setHash(data.hash);
         setButtons(data.sequence);
@@ -68,12 +70,6 @@ const VirtualKeyboard: React.FC = () => {
         setMessage(`❌ ${result}`);
         setMessageType("error");
       }
-
-      // Alerta temporário
-      setTimeout(() => {
-        setMessage("");
-        setMessageType("");
-      }, 5000); // Avisa por 5 segundos
     } catch (error) {
       console.error("Erro ao validar senha:", error);
       setMessage("Erro ao conectar com o servidor.");
@@ -102,7 +98,11 @@ const VirtualKeyboard: React.FC = () => {
           <div className="buttons">
             {buttons.map((pair, index) => (
               <div className="contentButton" key={index}>
-                <button onClick={() => handleButtonClick(pair[Math.floor(Math.random() * 2)])}>
+                <button
+                  onClick={() =>
+                    handleButtonClick(pair[Math.floor(Math.random() * 2)])
+                  }
+                >
                   {pair[0]} ou {pair[1]}
                 </button>
               </div>
@@ -119,7 +119,16 @@ const VirtualKeyboard: React.FC = () => {
           </div>
 
           <div className="return">
-            <p style={{ color: messageType === "success" ? "green" : messageType === "error" ? "red" : "black" }}>
+            <p
+              style={{
+                color:
+                  messageType === "success"
+                    ? "green"
+                    : messageType === "error"
+                    ? "red"
+                    : "black",
+              }}
+            >
               {message}
             </p>
           </div>
